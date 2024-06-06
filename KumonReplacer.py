@@ -18,15 +18,15 @@ def generate_question(operation):
     """Generates a math question based on the operation."""
 
     if operation == "Add":
-      num1 = int(random.randint(10, 1000))
-      num2 = int(random.randint(10, 100))
+      num1 = int(random.randint(10, 99))
+      num2 = int(random.randint(2, 10))
       return f"{num1} + {num2} = ", num1 + num2
     elif operation == "Subtract":
       num1 = int(random.randint(10, 100))
       num2 = int(random.randint(10, num1-10))
       return f"{num1} - {num2} =", num1 - num2
     elif operation == "Multiplication":
-      num1 = int(random.randint(3, 20))
+      num1 = int(random.randint(3, 10))
       num2 = int(random.randint(2,10))        
       return f"{num1} * {num2} =", num1 * num2
     elif operation == "Division":
