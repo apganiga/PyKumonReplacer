@@ -20,6 +20,7 @@ def generate_question(operation):
     if operation == "Add":
       num1 = int(random.randint(10, 99))
       num2 = int(random.randint(7, 15))
+      num2 = abs(10 - (num1 - num2)) + num2
       return f"{num1} + {num2} = ", num1 + num2
     elif operation == "Subtract":
       num1 = int(random.randint(10, 100))
