@@ -12,6 +12,8 @@ incorrect_feedback_phrase = ["That's Wrong!", "Incorrect!!", "Make it right next
 feedback_text_color = ""
 start_time = time.time()
 time_spent = 0
+right_answer = 0 
+wrong_answer = 0 
 
 
 def generate_question(operation):
@@ -77,7 +79,7 @@ operation_layout = [
 
 # Layout for the question screen
 question_layout = [
-    [sg.Text(f"\t\t\tYour Score:{score}", key="score", justification='right', font=("Helvetica", 14), text_color="black", background_color=background_color)],
+    [sg.Text(f"\tCorrect Answer:{right_answer}\tWrong Answer:{wrong_answer}", key="score", justification='right', font=("Helvetica", 14), text_color="black", background_color=background_color)],
     [sg.HorizontalSeparator()], 
     [sg.Text("", key="question",  background_color=background_color), sg.InputText(key="answer", size=(4, 1), focus=True , **{"enable_events": True})],
     [sg.Text("", key="timer", font=("Lucida Console", 14), text_color="black", background_color=background_color)],  # Timer text
@@ -140,16 +142,18 @@ while True:
                       feedback_text = "\t" + correct_feedback_phrase[int(random.randint(1,len(correct_feedback_phrase)-1))]
                       feedback_text_color = "Green"
                       score = score + 1
+                      right_answer +=1 
                     else:
                       feedback_text = "\t" + incorrect_feedback_phrase[int(random.randint(1,len(incorrect_feedback_phrase)-1))]
                       feedback_text_color = "Red"
+                      wrong_answer += 1
 
                     question_window["feedback"].update(feedback_text)
                     question, correct_answer = generate_question(selected_operation)
                     question_window["question"].update(question)
                     create_question_window = False
                     question_window["answer"].update("")
-                    question_window["score"].update(f"\t\t\tYour Score: {score}")
+                    question_window["score"].update(f"\tCorrect Answer:{right_answer}\tWrong Answer:{wrong_answer}")
                     question_window["answer"].set_focus() 
                     feedback_text = ""
 
