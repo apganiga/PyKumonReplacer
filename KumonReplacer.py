@@ -91,7 +91,8 @@ question_layout = [
 
 
 # Create the windows
-operation_window = sg.Window("Math Practice", operation_layout,  background_color=background_color)
+operation_window = sg.Window("Math Practice", operation_layout,  background_color=background_color, resizable=True)
+
 question_window = None
 
 while True:
